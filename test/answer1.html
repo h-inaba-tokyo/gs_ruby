@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Page Title</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+</head>
+
+<body>
+	<script>
+		var arr = ["A", "A", "B", "C", "C", "B", "A", "C", "C", "B", "B", "D", "D", "D", "A", "B", "D", "C", "A", "A", "C"]
+		console.log(arr)
+
+		// 3ぷんでやって見て答えを言ってもらう
+		// 解説5分
+		// paiza 15分
+		// 解説15分
+
+		//宿題
+
+		Q1
+		A,B,C,Dのアルファベットの数をそれぞれ数える
+
+		まず文字のカウント用のオブジェクトを定義する
+		var counter = {
+			A: 0,
+			B: 0,
+			C: 0,
+			D: 0
+		}
+
+		arrをfor文でぶん回す
+		arrの要素はcounterのキーになっているので該当する要素を加算する
+		for (let i = 0; i < arr.length; i++) {
+			counter[arr[i]] += 1
+		}
+		最後にcounterをfor in文でぶん回す
+		for(let key in counter){
+			console.log(key + ':' +  counter[key])
+		}
+
+		Q2
+		5文字以上ある文字を一行で出力する
+		文字カウント用のオブジェクトを作って文字をカウントするところまではQ1と一緒
+		var counter = {
+			A: 0,
+			B: 0,
+			C: 0,
+			D: 0
+		}
+
+		for (let i = 0; i < arr.length; i++) {
+			counter[arr[i]] += 1
+		}
+		出力する値をキャッシュする変数を定義する
+		var result = '' //出力するものは文字なので初期値は空文字
+
+		カウントが終わったらカウント用のオブジェクトをfor in 文でぶん回す
+		もし値が5以上だったら出力ようの変数に追加する
+		for (let k in counter) {
+			if (counter[k] > 4) {
+				result += k
+			}
+		}
+		最後に値を出力する
+		console.log(result)
+
+
+		Q3
+		配列の先頭から文字を順番にカウントし、いずれかの文字が5文字を超えたらその文字を出力する
+		カウント用のオブジェクトを定義してarrをfor文でぶん回すところまでは同じ
+		var counter = {
+			A: 0,
+			B: 0,
+			C: 0,
+			D: 0
+		}
+
+		for (let i = 0; i < arr.length; i++) {
+			counter[arr[i]] += 1
+		counterの要素で5以上のものがあるかどうかチェック
+			for (let k in counter) {
+				if (counter[k] > 5) {
+					console.log(k)
+				}
+			}
+		}
+
+		Q4
+		配列の先頭から文字を順番にカウントし、いずれかの文字が5文字を超えたらその文字を出力する、それ以降は何も出力しない
+		途中まではQ3と全く同じ
+		どれかが5文字を超えたかどうかのフラグを用意する
+
+		var flg = false
+
+		var counter = {
+			A: 0,
+			B: 0,
+			C: 0,
+			D: 0
+		}
+
+		for (let i = 0; i < arr.length; i++) {
+			if (flg == false) { // もしまだどの文字も5文字を超えていなかったら
+				counter[arr[i]] += 1
+				for (let k in counter) {
+					if (counter[k] > 5) {
+						flg = true // フラグを変更する
+						console.log(k)
+					}
+				}
+			}
+		}
+	</script>
+</body>
+
+</html>
